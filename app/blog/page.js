@@ -9,9 +9,9 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('https://dummyapi.online/api/blogposts');
+        const res = await fetch('http://localhost:3000/api/blog');
         const result = await res.json();
-        setBlogList(result);
+        setBlogList(result.blogs);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
