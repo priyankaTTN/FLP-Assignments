@@ -10,9 +10,10 @@ const Page = ({ params }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch(`https://dummyapi.online/api/blogposts/${id}`);
+                const res = await fetch(`http://localhost:3000/api/blog/${id}`);
                 const result = await res.json();
-                setBlogDetail(result);
+                console.log(result, 'result')
+                setBlogDetail(result.blog);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -24,9 +25,28 @@ const Page = ({ params }) => {
         }
     }, []); // <-- empty dependency array means this effect runs only once when the component mounts
 
+    const handleDelete = async () => {
+        try {
+          const res = await fetch(`http://localhost:3000/api/blog`, {method: 'DELETE'},  {
+            cache: "no-store",
+          });
+      
+          if (!res.ok) {
+            throw new Error("Failed to delete blog");
+          }
+      
+          return res.json();
+        } catch (error) {
+          console.log(error);
+        }
+    
+    
+      }
+
     return (
         <div className='blogData'>
             <Link href= {'/blog'}>Back</Link>
+            <span onClick= {handleDelete}>Delete</span>
             <div className='content'>
                 <h1>{blogDetail.title}</h1>
                 <p>{blogDetail.content}</p>

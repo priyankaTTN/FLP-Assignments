@@ -22,6 +22,8 @@ const card = (props) => {
     return text;
   };
 
+
+
   return (
     <div className='cards' >
         <div className='content'>
@@ -32,6 +34,7 @@ const card = (props) => {
         <div className='authorDetail'>
             {props.author}
         </div>
+       
     </div>
   );
 };
