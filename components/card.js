@@ -10,8 +10,9 @@ const card = (props) => {
 
   // Function to handle click event and navigate to detail page
   const handleClick = () => {
+    console.log(props, 'props!!!!')
     // Navigate to the detail page using React Router
-    router.push(`/blog/${props.id}`); // Replace '/detail' with your actual detail page route
+    router.push(`/blog/${props._id}`); // Replace '/detail' with your actual detail page route
   };
 
   // Function to truncate text
@@ -28,7 +29,7 @@ const card = (props) => {
     <div className='cards' >
         <div className='content'>
            <h3>{props.title}</h3>
-           <p>{truncateText(props.content, 20)} <span  onClick={handleClick}> read more</span></p>
+           <p>{truncateText(props.content, 50)} <span  onClick={handleClick}> read more</span></p>
            <span>{props.date_published}</span>
         </div>
         <div className='authorDetail'>

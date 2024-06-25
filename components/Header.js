@@ -1,18 +1,19 @@
-import React from 'react'
-import Link from 'next/link'
+// components/Header.js
+import React, { memo } from 'react';
+import NavLink from './NavLink';
 
- const Header = () => {
+
+const Header = () => {
   return (
     <nav className='header'>
       <ul>
-        <li><Link href={'/'}>Home</Link></li>
-        <li><Link href={'/about'}>About</Link></li>
-        <li><Link href={'/blog'}>Blog</Link></li>
-        <li><Link href={'/product'}>Product</Link></li>
-        </ul>
-
+        <li><NavLink href='/'>Home</NavLink></li>
+        <li><NavLink href='/about'>About</NavLink></li>
+        <li><NavLink href='/blog'>Blog</NavLink></li>
+        <li><NavLink href='/product'>Product</NavLink></li>
+      </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Header
+export default memo(Header);
